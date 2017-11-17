@@ -1,12 +1,14 @@
 Package: capsnet
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Title: Dynamic Routing Between Capsules implementation in Keras
+Version: 0.0.1.9000
+Authors@R: c(
+  person("Daniel", "Falbel", email = "dfalbel@gmail.com", role = c("cre", "aut")),
+  person("Guo", "Xi Feng", email = "guoxifeng1990@163.com", role = "aut", 
+  comment = "Original Python Implementation https://github.com/XifengGuo/CapsNet-Keras"))
+Description: Provides an implementation of "Dynamic Routing Between Capsules" 
+  <https://arxiv.org/abs/1710.09829> for R.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: keras,
