@@ -4,7 +4,7 @@ Title: Dynamic Routing Between Capsules implementation in Keras
 Version: 0.0.1.9000
 Authors@R: c(
   person("Daniel", "Falbel", email = "dfalbel@gmail.com", role = c("cre", "aut")),
-  person("Guo", "Xi Feng", email = "guoxifeng1990@163.com", role = "aut", 
+  person("Xifeng", "Guo", email = "guoxifeng1990@163.com", role = "aut", 
   comment = "Original Python Implementation https://github.com/XifengGuo/CapsNet-Keras"))
 Description: Provides an implementation of "Dynamic Routing Between Capsules" 
   <https://arxiv.org/abs/1710.09829> for R.
