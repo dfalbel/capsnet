@@ -22,7 +22,11 @@ margin_loss <- function(y_true, y_pred) {
 }
 
 
-#lr_decay = callbacks.LearningRateScheduler(schedule=lambda epoch: args.lr * (0.9 ** epoch))
+
+lr_decay <- callback_learning_rate_scheduler(schedule = function(epoch) {
+  0.001*(0.9^epoch)
+})
+
 
 # compile the model
 model$train_model %>% compile(
@@ -42,6 +46,7 @@ model$train_model %>%
     validation_data = list(
       list(mnist$test$x, mnist$test$y),
       list(mnist$test$y, mnist$test$x)
-    )
+    ),
+    callbacks = list(lr_decay)
   )
 
