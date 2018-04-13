@@ -1,12 +1,11 @@
-
-#m <- create_capsnet()
-
+#' Create capsnet model
+#'
+#' @param input_shape input_shape of images
+#' @param n_class number of classes
+#' @param num_routing number of routing units
+#'
+#' @export
 create_capsnet <- function(input_shape = c(28, 28, 1), n_class = 10L, num_routing = 3L) {
-
-
-  # input_shape = c(28, 28, 1)
-  # n_class = 10L
-  # num_routing = 3L
 
   x <- keras::layer_input(shape = input_shape, name = "input")
 

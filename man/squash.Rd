@@ -5,7 +5,7 @@
 \title{The non-linear activation used in Capsule. It drives the length of a large vector to
 near 1 and small vector to 0}
 \usage{
-squash(vectors, axis = -1)
+squash(vectors, axis = -1L)
 }
 \arguments{
 \item{vectors}{some vectors to be squashed, N-dim tensor}
