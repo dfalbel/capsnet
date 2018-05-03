@@ -10,7 +10,7 @@ Length <- R6::R6Class(
   public = list(
 
     call = function(inputs, mask = NULL) {
-      KB$sqrt(KB$sum(KB$square(inputs), -1L))
+      keras::k_sqrt(keras::k_sum(keras::k_square(inputs), -1L))
     },
 
     compute_output_shape = function(input_shape) {

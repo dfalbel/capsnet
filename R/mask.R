@@ -19,18 +19,18 @@ Mask <- R6::R6Class(
         mask <- inputs[[2]]
         inputs <- inputs[[1]]
 
-        mask <- KB$expand_dims(mask, -1L)
+        mask <- keras::k_expand_dims(mask, -1L)
 
       } else {
 
         x <- inputs
         # Enlarge the range of values in x to make max(new_x)=1 and others < 0
-        x <- (x - KB$max(x, 1L, TRUE)) / KB$epsilon() + 1
-        mask <- KB$clip(x, 0, 1)  # the max value in x clipped to 1 and other to 0
+        x <- (x - keras::k_max(x, 1L, TRUE)) / keras::k_epsilon() + 1
+        mask <- keras::k_clip(x, 0, 1)  # the max value in x clipped to 1 and other to 0
 
       }
 
-      KB$batch_flatten(inputs*mask)
+      keras::k_batch_flatten(inputs*mask)
     },
 
     compute_output_shape = function(input_shape) {

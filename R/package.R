@@ -1,10 +1,8 @@
 # Main Keras module
 keras_caps <- NULL
-KB <- NULL
 
 .onLoad <- function(libname, pkgname) {
   keras_caps <<- keras::implementation()
-  KB <<- keras_caps$backend
 }
 
 #' Pipe operator

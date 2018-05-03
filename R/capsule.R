@@ -73,20 +73,20 @@ CapsuleLayer <- R6::R6Class(
 
       # inputs.shape=[None, input_num_capsule, input_dim_vector]
       # Expand dims to [None, input_num_capsule, 1, 1, input_dim_vector]
-      inputs_expand <- KB$expand_dims(KB$expand_dims(inputs, 2L), 2L)
+      inputs_expand <- keras::k_expand_dims(keras::k_expand_dims(inputs, 2L), 2L)
 
       # Replicate num_capsule dimension to prepare being multiplied by W
       # Now it has shape = [None, input_num_capsule, num_capsule, 1, input_dim_vector]
-      inputs_tiled <- KB$tile(inputs_expand, c(1L, 1L, self$num_capsule, 1L, 1L))
+      inputs_tiled <- keras::k_tile(inputs_expand, c(1L, 1L, self$num_capsule, 1L, 1L))
 
       # Compute `inputs * W` by scanning inputs_tiled on dimension 0. This is faster but requires Tensorflow.
       # inputs_hat.shape = [None, input_num_capsule, num_capsule, 1, dim_vector]
       inputs_hat <- tensorflow::tf$scan(
         function(ac, x) {
-          KB$batch_dot(x, self$W, c(3L, 2L))
+          keras::k_batch_dot(x, self$W, c(3L, 2L))
         },
         elems = inputs_tiled,
-        initializer = KB$zeros(c(self$input_num_capsule, self$num_capsule, 1, self$dim_vector))
+        initializer = keras::k_zeros(c(self$input_num_capsule, self$num_capsule, 1, self$dim_vector))
       )
 
       stopifnot(self$num_routing > 0)
@@ -94,14 +94,14 @@ CapsuleLayer <- R6::R6Class(
       # Routing algorithm. Use iteration.
       for(i in seq_along(self$num_routing)) {
         sigm <- tensorflow::tf$nn$softmax(self$bias, dim = 2L)
-        outputs <- squash(KB$sum(sigm * inputs_hat, 1L, keepdims = TRUE))
+        outputs <- squash(keras::k_sum(sigm * inputs_hat, 1L, keepdims = TRUE))
 
         if(i == self$num_routing) {
-          self$bias = self$bias + KB$sum(inputs_hat * outputs, -1L, keepdims = TRUE)
+          self$bias = self$bias + keras::k_sum(inputs_hat * outputs, -1L, keepdims = TRUE)
         }
       }
 
-      KB$reshape(outputs, c(-1L, self$num_capsule, self$dim_vector))
+      keras::k_reshape(outputs, c(-1L, self$num_capsule, self$dim_vector))
 
     },
 
