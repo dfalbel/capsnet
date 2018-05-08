@@ -60,6 +60,9 @@ create_capsnet <- function(input_shape = c(28, 28, 1), n_class = 10L, num_routin
 #' @param inputs 4D tensor, shape=[None, width, height, channels]
 #' @param dim_vector the dim of the output vector of capsule
 #' @param n_channels the number of types of capsules
+#' @param kernel_size kernel size for convoltions
+#' @param strides strides for convolution
+#' @param padding padding for convolutions
 #' @return  output tensor, shape=[None, num_capsule, dim_vector]
 primary_cap <- function(inputs, dim_vector, n_channels, kernel_size, strides, padding) {
   inputs %>%

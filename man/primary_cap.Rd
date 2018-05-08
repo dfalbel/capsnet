@@ -12,6 +12,12 @@ primary_cap(inputs, dim_vector, n_channels, kernel_size, strides, padding)
 \item{dim_vector}{the dim of the output vector of capsule}
 
 \item{n_channels}{the number of types of capsules}
+
+\item{kernel_size}{kernel size for convoltions}
+
+\item{strides}{strides for convolution}
+
+\item{padding}{padding for convolutions}
 }
 \value{
 output tensor, shape=[None, num_capsule, dim_vector]
