@@ -11,8 +11,16 @@ Description: Provides an implementation of "Dynamic Routing Between Capsules"
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: keras,
+Imports: 
+    keras,
     R6,
     tensorflow,
-    reticulate
+    reticulate,
+    magrittr
 RoxygenNote: 6.0.1
+Remotes:
+    rstudio/keras
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
