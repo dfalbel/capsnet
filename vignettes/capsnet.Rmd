@@ -1,6 +1,25 @@
+---
+title: "CapsNet"
+author: "Daniel Falbel"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r, eval = FALSE}
 library(keras)
-#library(capsnet)
-devtools::load_all()
+library(capsnet)
+
 
 
 mnist <- dataset_mnist()
@@ -46,7 +65,10 @@ model$train_model %>%
     validation_data = list(
       list(mnist$test$x, mnist$test$y),
       list(mnist$test$y, mnist$test$x)
-    ),
-    callbacks = list(lr_decay)
+    )#,
+    #callbacks = list(lr_decay)
   )
+
+
+```
 
